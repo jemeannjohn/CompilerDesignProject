@@ -1,0 +1,12 @@
+#Program to find the sum of first 10 natural numbers *****
+main(){
+  x=10;
+  b = 100;
+  sum = 0;
+  while( x != 0){
+   sum = sum + x;
+   x = x-1;
+  }
+  print "sum is:";
+  print sum;
+}

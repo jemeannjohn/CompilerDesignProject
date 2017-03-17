@@ -1,0 +1,16 @@
+#Program performing stack dataoperations
+main(){
+	stack s;
+	spush(s, 10);
+	spush(s, 20);
+	empty(s); 
+	b = 0;
+	b = top(s); 
+	print "top of the stack is:";
+	print b;
+	spop(s);
+	b = top(s); 
+	print "top of the stack after pop() is:";
+	print b;
+	
+} 

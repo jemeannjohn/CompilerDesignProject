@@ -1,0 +1,16 @@
+MAIN_START
+STACK VAR_s
+STACK_PSHS VAR_s 10
+STACK_PSHS VAR_s 20
+EMPTY VAR_s
+VAR_b 0
+TOPS VAR_s
+MOV VAR_b EAX
+PRINT "top of the stack is:"
+PRINT VAR_b
+STACK_POP VAR_s
+TOPS VAR_s
+MOV VAR_b EAX
+PRINT "top of the stack after pop() is:"
+PRINT VAR_b
+MAIN_END

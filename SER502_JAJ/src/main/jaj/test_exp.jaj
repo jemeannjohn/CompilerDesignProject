@@ -1,0 +1,15 @@
+main()
+{
+  a = 0;
+  b = 10;
+  c = 5;
+  e = 3;
+  d = 10;
+  # paranthesised expression evaluation
+  a = (e + c) * d - b;
+  print "a after exp 1 is:";
+  print a;
+  # expression evaluation following BODMAS and left - right 
+  a = e + c * d - b;
+  print a;
+}

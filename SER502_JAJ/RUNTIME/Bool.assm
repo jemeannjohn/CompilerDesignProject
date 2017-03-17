@@ -1,0 +1,18 @@
+MAIN_START
+VARB_tr 1
+VARB_fa 0
+PRINT VARB_tr
+PRINT VARB_fa
+CMP VARB_fa VARB_tr
+JNE LABEL_0
+PRINT "it is true"
+JMP LABEL_1
+LABEL_0
+PRINT "once is false"
+PRINT "once is false"
+PRINT "once is false"
+PRINT "once is false"
+PRINT "once is false"
+LABEL_1
+PRINT "GOT it"
+MAIN_END

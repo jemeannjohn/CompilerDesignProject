@@ -1,0 +1,58 @@
+GLOBAL_START
+VAR_xx 20 #as of now VAR(case sensitive) is equal to int
+VAR_x 20
+GLOBAL_END
+
+#above code is higher language such as C as below
+#we are defining variable
+#Global variable will have different dic/hashmap
+
+int xx=20
+int x=20
+
+# Each function will start with function name followed by _START and END with RET
+# The return value of each function is store in EAX register
+# To pass argument to the function one need to push arg on argstack
+# For if statement we need to generate branch label for JNE
+# To call a fuction CALL is Used we need to push arg before calling the function
+# all the MUL SUB result is store in EAX
+# one main fuction has a exception it doesn't have RET
+
+int fac(int num){
+  if (num==1){
+      return 1;
+  }else{
+    return (fac(num-1)*num);
+  }
+}
+
+int main()
+{
+  int x=10;
+  int y=100;
+  printf("%d\n",x);
+  printf("%d",fac(x));
+}
+
+
+
+FACTORIAL_START VAR_num
+PRINT VAR_num
+CMP VAR_num 1
+JNE LABEL
+RET VAR_num
+LABEL
+MOV EAX VAR_num
+SUB EAX 1
+PUSH EAX
+CALL FACTORIAL_START
+MUL EAX VAR_num
+RET EAX
+MAIN_START
+VAR_x 100
+VAR_y 100
+PRINT VAR_x
+PUSH VAR_x
+CALL FACTORIAL_START
+PRINT EAX
+MAIN_END

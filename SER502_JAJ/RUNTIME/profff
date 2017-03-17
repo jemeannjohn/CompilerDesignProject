@@ -1,0 +1,101 @@
+SANNER
+<NUMBER>=
+<IDENT>=[A-Za-z]
+<ADDOP> = +| -
+<MULOP>= * |/
+EXPOP='**'
+
+
+PARSER
+<EXPRESSION>::=  <TERM>{ADDOP<TERM>}
+<TERM>::=<FACTOR>{MULOP<FACTOR>}
+<FACTOR>:: =NUMBER | IDENT| '(' EXPRESSION ')'
+
+
+NUMBER =r'[0-9]+'
+IDENT=r'[A-Za-z][A-Za-z0-9]*'
+ADDOP=r'[\+|\-]'
+MULOP=r'[\*|\/]'
+PARENS =r'\(|\)'
+WS=r'\s*'
+
+### to check
+import re
+m=re.match(NUMBER,'-34x')
+m.group()
+
+
+class Tokenizer:
+  def __init__(self,text):
+    self.ttype=None
+    self.pos=None
+    self.match=None
+  def tokentype(self):
+      self.ttype
+
+  def token(self):
+    self.match.group()
+
+  def skipws(self):
+      re.match(WS,self.text[self.pos:])
+
+  def nextToken(self):
+    if self.match:
+      self.pos +=self.match.end()
+    self.skipws()
+    self.ttype=None
+    for ttype in (ADD,MULOP,IDENT,NUMBER,PARENS):
+      self.match=re.match(ADDOP,self.text[self.pos:])
+      if self.match is not None:
+        self.ttype=ttupe
+        break
+    return None,None #self.ttype,self.match.group()
+
+##Test
+test =Tokenizer('3+4*5'-(7+2))
+while test.ttype is not None:
+  print '{:03}:'.format(test.pos),test.match.group()
+  test.nextToken()
+
+
+
+###########Parser
+
+class Parser:
+  def __init__(self,tokens):
+    slef.tokens=tokens
+    if self.tokens.ttype in None;
+        self.tokens.nextToken()
+
+  def expression(self):
+    self.term()
+    while self.tokens.ttype in ADDOP:
+        self.tokens.nextToken()
+        self.term()
+
+  def term(self):
+    self.factor()
+    while self.tokens.ttype in MULOP:
+        self.tokens.nextToken()
+        self.factor()
+
+  def factor(self):
+    if self.tokens.ttype is None:
+      print "ERROR"
+    elif self.tokens.ttype is NUMBER:
+      self.tokens.nextToken()
+    elif self.tokens.ttype is IDENT:
+        self.tokens.nextToken()
+    elif self.tokens.match.group()=='(':
+        self.tokens.nextToken()
+        expression()
+        if self.token.match is None or  self.token.match.group() !=')':
+          print 'Missing closing Parentesis at',self.tokens.pos
+        self.tokens.nextTokens()
+    else:
+      print "Unexpected Token:",self.token.match.group(),"at",self.tokens.pos
+
+
+##############TEST
+p=Parser(Tokenizer('3+4*5'-(7+2)))
+p.expression()
